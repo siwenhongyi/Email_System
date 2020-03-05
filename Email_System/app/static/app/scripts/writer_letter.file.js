@@ -43,11 +43,11 @@ function upFile(a) {
         }else {
             li = '<li><span><i class="fa appfile-o">&nbsp;</i>&nbsp;&nbsp;&nbsp;' + name + '</span> <span class="size">&nbsp;&nbsp;&nbsp;' + parseInt(files.size / 1000) + 'kb&nbsp;&nbsp;&nbsp;</span> <span class="remove" data-class="li' + timeStamp + '" onclick="deleteLi(this)">删除</span> </li>';
         }
-        if ($('.subfilesul li').length < 10) {  //判断不能超过10个  可自行写入多少
+        if ($('.subfilesul li').length < 4) {  //判断不能超过10个  可自行写入多少
             $('.subfilesul').append(li);
             $('#count').attr('value',$('.subfilesul li').length);
         } else {
-            pageCommon.layerMsg("最多能选择10个附件", 2, true)
+            pageCommon.layerMsg("最多能选择3个附件", 2, true)
         }
 
         if ($('.subfilesul li').length != 0) {  // 显示隐藏 未选择文件字眼

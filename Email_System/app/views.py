@@ -264,8 +264,37 @@ def sendbox(request):
 @check_login
 def mail(request):
     if check_Legality(request.GET.get('mid'),request.session.get('user_email','')):
-
-        pass
+        mail = Mymail()
+        mail = Mymail.objects.get(mid = request.GET.get('mid'))
+        try:
+            sender_name = user.objects.get(user_email = mail.sender).user_name
+        except Exception as e:
+            sender_name = ''
+            pass
+        try:
+            receiver_name = user.objects.get(user_email = mail.receiver).user_name
+        except Exception as e:
+            receiver_name = ''
+            pass
+        if mail.sendstatus:
+            status = '发送成功'
+        else:
+            status = '发送失败'
+        if not mail.readstatus:
+            mail.readstatus = True
+            mail.save()
+        return render(
+            request,
+            'app/mail.html',
+            {
+                'title':mail.theme,
+                'year':datetime.now().year,
+                'mail':mail,
+                'sendername':sender_name,
+                'receivername':receiver_name,
+                'status':status,
+            }
+        )
     else:
         return render(
             request,

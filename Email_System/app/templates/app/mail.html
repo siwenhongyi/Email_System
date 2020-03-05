@@ -3,21 +3,67 @@
 {% block rightpart %}
 
 <!DOCTYPE html>
+<html>
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/mail.css' %}" />
+    <script src="{% static 'app/scripts/mail.js' %}"></script>
     <!--
         <link rel="stylesheet" type="text/css" href="{% static 'app/content/mailbox.css' %}" />
         <script src="{% static 'app/scripts/mailbox.js' %}"></script>
     -->
-    
-</head>
-<body>
 
+</head>
+
+<body>
+    <div class="mailinfo">
+        <div class="theme">
+            <span><label>&nbsp;{{mail.theme}}</label></span>
+        </div>
+        <div class="info">
+            <div>
+                <span><label>发件人：</label></span>
+                <span><label>{{sendername}}&lt;{{mail.sender}}&gt;</label></span>
+            </div>
+            <div>
+                <span><label>时间：</label></span>
+                <span><label>{{mail.time}}</label></span>
+            </div>
+            <div>
+                <span><label>收件人：</label></span>
+                <span><label>{{receivername}}&lt;{{mail.receiver}}&gt;</label></span>
+            </div>
+            <div>
+                <span><label>附件：</label></span>
+                <span><label>{{mail.files.count}}个</label></span>
+            </div>
+            <div>
+                <span><label>发送状态：</label></span>
+                <span><label>{{status}}</label></span>
+            </div>
+        </div>
+    </div>
+    <hr />   
+    <div class="coninfo">
+        <textarea class="con" rows="15" readonly = "readonly">{{mail.content}}</textarea>
+    </div>
+    <hr />
+    <div class="att">&nbsp;</div>
+    <div>
+        <form action="/mailmenu/" method="POST" class="mailmenu">
+            <div>
+                <input type="submit" id="reply" value="回复"/>
+                <input type="submit" id="delete" value="删除" />
+                <input type="submit" id="delete_per" value="彻底删除" />
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>
 
 {% endblock %}
