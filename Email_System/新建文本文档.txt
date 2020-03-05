@@ -1,0 +1,16 @@
+                <div class="form-group">
+                    <label for = "user_name" class="col-md-2 control-label">User Name</label>
+                    <div class="col-md-10">
+                        <input type="text" id = "user_name" name="user_name">
+                    </div>
+                </div>
+
+insert into user values(
+'732132604@qq.com','张明利','12588','2020/01/01',NULL,'唐学波大笨蛋',732132','111011101',NULL
+
+
+
+
+);
+
+从删库到跑路

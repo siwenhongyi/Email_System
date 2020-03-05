@@ -1,0 +1,66 @@
+{% extends "app/layout_main.html" %}
+
+{% block rightpart %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/mailbox.css' %}" />
+    <script src="{% static 'app/scripts/mailbox.js' %}"></script>
+</head>
+<body>
+    <div class="mailbox">
+        <table class="titlebar">
+            <tbody>
+                <tr>
+                    <td class="mailico"><input type="button" class="mailtitle" disabled></td>
+                    <td class="boxtype">{{ boxtype }}</td>
+                    <td class="theme">主题</td>
+                    <td class="sendtime">时间</td>
+                </tr>
+            </tbody>
+        </table>
+        {% for mit in message %}
+        <table class="mailtb" cellspacing="0" data-class = {{ mit.mid }} onclick="mail_open(this)">
+            <tbody>
+                <tr>
+                    <td class="mailico" data-class={{ mit.mid }} title="新窗口打开" onclick="mail_open(this)">
+                        {% if mit.readstatus %}
+                        <div class="read ico"></div>
+                        {% else %}
+                        <div class="unread ico"></div>
+                        {% endif %}                      
+                        {% if mit.files.count %}
+                        <div class="att ico"></div>
+                        {% endif %}
+                    </td>
+                    <td class="mailinfo" >
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="boxtype">
+                                    {% if boxtype == '收件箱' %}
+                                    {{ mit.sender }}
+                                    {% else %}
+                                    {{ mit.receiver }}
+                                    {% endif %}
+                                    </td>
+                                    <td class="theme">{{ mit.theme }}</td>
+                                    <td class="sendtime">{{ mit.time|date:"Y-m-d H:i:s"  }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {% endfor %}
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,21 @@
+.page_all {
+    width: 104%;
+    height: 100%;
+    margin: 0px;
+    border-radius: 15px;
+}
+.menu {
+    width: 15%;
+    height:100%;
+    float: left;
+    margin-right: 0px;
+}
+.right_page {
+    width: 85%;
+    height:100%;
+    float: left;
+    margin-top: -5px;
+    margin-left: -2px;
+    background: url('../ico/backgroundimg_for_rightpage_page.jpg') no-repeat center center fixed;
+    background-size: 100%;
+}

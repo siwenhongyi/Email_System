@@ -1,0 +1,35 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>红衣邮箱</h1>
+    <p class="lead">一个简单的基于SMTP的邮箱系统</p>
+    <p><a href="http://127.0.0.1:8000/about/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>开始使用</h2>
+        <p>
+            项目使用依托开源 Python Web 框架 Django<br>
+            项目刚刚开始测试，请积极反馈存在的问题<br>
+            点击链接开始你的使用之旅
+        </p>
+        <p><a class="btn btn-default" href="http://127.0.0.1:8000/login/">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>说明文档</h2>
+        <p>阅读说明文档以了解更多项目细节和说明</p>
+        <br><br>
+        <p><a class="btn btn-default" href="https://www.baidu.com/">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>项目位置</h2>
+        <p>获取整个项目的源文件</p>
+        <br><br>
+        <p><a class="btn btn-default" href="https://github.com/">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+{% endblock %}

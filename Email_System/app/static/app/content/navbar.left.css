@@ -1,0 +1,93 @@
+.menu
+{
+    margin-top: -6px;
+    margin-left: -52px;
+}
+img
+{
+    width: 100%; 
+    height: auto;
+    margin-top: 35px;
+}
+.navbar_ul a
+{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 55px;
+    font-family: "lucida Grande",Verdana,"Microsoft YaHei";
+}
+ul.navbar_ul
+{
+    border-right: 1px #606060;
+    padding-top: 0px;
+    padding-left: 0px;
+}
+
+.menu ul.navbar_ul li.fs,.menu ul.navbar_ul li.fs a
+{
+    height: 80px!important;
+}
+
+.menu ul.navbar_ul li.fs a
+{
+    line-height: 160px;
+    padding-left: 0px;
+}
+
+.menu ul.navbar_ul li.fs
+{
+    height: 160px;
+    line-height: 55px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0 0 0 0;
+    padding: 2px 0 0 0;
+    height: 80px;
+    *height: 22px;   
+}
+.menu li.fs a
+{
+    display: block;
+    height: 160px;
+    overflow: hidden;
+    padding-left: 0px;
+    text-decoration: none;
+}
+
+li
+{
+    list-style: none;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+a
+{
+    outline: none;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+}
+a:hover
+{
+    text-decoration: underline;
+}
+li.fs
+{
+    height: 160px;
+    _line-height: 23px;
+    overflow: hidden;
+    padding: 0 2px 0 10px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+a,a:link,a:visited,a:hover
+{
+    color: red;
+}
+
+/*这里设置鼠标悬停颜色*/
+.menu li.fs a:hover
+{
+    background: #606060;
+    text-decoration: none;
+}

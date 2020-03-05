@@ -1,0 +1,74 @@
+/*以下内容调整整个列表元素的宽度以及其他样式*/
+.mailbox
+{
+    margin-top: 20px;
+    width: 100%;
+}
+.mailbox table
+{
+    table-layout: fixed;
+    width: 100%;
+}
+.mailico
+{
+    width: 10%;
+}
+.boxtype
+{
+    width: 30%;
+}
+.theme
+{
+    width: 30%;
+}
+.sendtime
+{
+    width: 30%;
+}
+.ico
+{
+    display: inline-block;
+}
+.mailtitle,.att,.read,.unread
+{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+}
+.mailtitle
+{
+    height: 24px;
+    width: 30px;
+    margin-left: 6px;
+    border: none;
+    background-image: url('../ico/ico_mailtitle.png');
+    background-color: transparent;
+}
+.read,.unread
+{
+    height: 25px;
+    width: 20px;
+}
+.read
+{
+    background-image: url('../ico/readmail.png');
+}
+.unread
+{
+    background-image: url('../ico/unreadmail.png');
+}
+.att
+{
+    height: 25px;
+    width: 17px;
+    background-image: url('../ico/attachment.png');
+}
+.mailtb
+{
+    cursor: pointer;
+}
+.mailtb:hover
+{
+    background-color:#C4E1EF;
+}

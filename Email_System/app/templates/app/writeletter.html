@@ -1,0 +1,62 @@
+﻿{% extends "app/layout_main.html" %}
+
+{% block rightpart %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/write.letter.css' %}" />
+    <script src="{% static 'app/scripts/toolbar.js' %}"></script>
+    <script src="{% static 'app/scripts/respond.js' %}"></script>
+    <script src="{% static 'app/scripts/writer_letter.file.js' %}"></script>
+</head>
+
+<body>
+    <form action="/sendletter/" method="POST" class="letter" enctype="multipart/form-data" onsubmit="return checkmail();">
+        {% csrf_token %}
+        <div class="mailinfo">
+            <ul class="info">
+                <li class="info_font">收件人:</li>
+                <li class="to_email">
+                    <input type="email" value="{{ to }}" name="first" maxlength="20"
+                        onblur="value = value.replace(/[^\a-\z\A-\Z0-9.@_]/g,'')">
+                    <!--autocomplete="off" -->
+                </li>
+                <li class="info_font">主题</li>
+                <li class="theme">
+                    <input type="text" value="{{ theme }}" name="second" maxlength="25" id="theme" autocomplete="off">
+                </li>
+                <li class="files">
+                    <a href="javascript:void(0);" class="file">上传附件
+                        <input class="appfile" type="file" onchange="upFile(this)" name="0" />
+                    </a>
+                    <span class="no_file">未添加附件</span>
+                </li>
+                <li><input type="text" id="count" name="count" value="0" style="display: none;" /></li>
+                <li class="subfiles">
+                    <ul class="subfilesul" id="subfilesul"></ul>
+                </li>
+                <li class="info_font">内容</li>
+                <li class="content">
+                    <textarea name="last" cols="50" rows="20" maxlength="1000"></textarea>
+                </li>
+            </ul>
+        </div>
+        <div class="toolbar">
+            <input class="sendbtn bt" type="submit" value="发送" id="sendbtn">
+            <button class="savebtn bt" type="submit">
+                <a class="tb" href="">存草稿</a>
+            </button>
+            <button class="giveupbtn bt" type="submit">
+                <a class="tb" href="{% url 'home_page' %}">放弃</a>
+            </button>
+        </div>
+    </form>
+</body>
+
+</html>
+{% endblock %}

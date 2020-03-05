@@ -1,0 +1,164 @@
+/*以下针对 各个label和输入框设置*/
+.cc
+{
+    pointer-events:none;
+}
+ul.info
+{
+    font-family: "Microsoft YaHei","lucida Grande",Verdana;
+    font-size: 14px;
+    line-height: 20px;
+}
+ul.info input,ul.info textarea
+{
+    max-width: 800px;
+    width: 800px;
+    background-color: transparent;
+    line-height: 20px;
+    margin-bottom: 5px;
+    outline-style: none;
+    border-color: #C4E1EF;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+ul.info textarea
+{
+    text-indent: 4em;
+    font-family: "Microsoft YaHei";
+}
+li.info_font
+{
+    font-family:"Microsoft YaHei";
+}
+
+
+/*以下针对最下方按钮样式*/
+ul.toolbar button
+{
+    background-color: transparent;
+    margin: 20px 40px;
+    border: none;
+}
+
+.toolbar .bt
+{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    height: 32px;
+    padding: 6px 15px;
+    margin: 0px 45px;
+    background-color: #606060;
+    color: rgba(0,0,0,0.65);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 2px 0 rgba(0,0,0,0.015);
+    box-shadow: 0 2px 0 #303030;
+}
+.toolbar a.tb
+{
+    text-decoration: none;
+    color: #303030;
+}
+
+/*以下内容 针对 动态的附件信息而设定
+.appfile
+{
+    max-width: 30px;
+    width: 30px;
+    height: 6px;
+}
+*/
+/*附件按钮*/
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    border: 0px solid #99D3F5;
+    border-radius: 4px;
+    padding: 0px 0px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+}
+a.file
+{
+    color: #303030;
+}
+.file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+.file:hover {
+    background: #AADFFD;
+    border-color: #78C3F3;
+    color: #004974;
+    text-decoration: none;
+}
+/*附件详细信息*/
+/*附件图标*/
+i.fa
+{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    background-position: center center;
+    background-size: 18px 20px;
+    background-repeat: no-repeat;
+}
+i.appfile-image-o
+{
+    background-image: url('../ico/appfile-image-o.png');
+}
+i.appfile-word-o
+{
+    background-image: url('../ico/appfile-word-o.png');
+}
+i.appfile-excel-o
+{
+    background-image: url('../ico/appfile-excel-o.png');
+}
+i.appfile-ppt-o
+{
+    background-image: url('../ico/appfile-ppt-o.png');
+}
+i.appfile-pdf-o
+{
+    background-image: url('../ico/appfile-pdf-o.png');
+}
+i.appfile-com-o
+{
+    background-image: url('../ico/appfile-com-o.png');
+}
+i.appfile-audio-o
+{
+    background-image: url('../ico/appfile-audio-o.png');
+}
+i.appfile-video-o
+{
+    background-image: url('../ico/appfile-video-o.png');
+}
+i.appfile-text-o
+{
+    background-image: url('../ico/appfile-text-o.png');
+}
+i.appfile-o
+{
+    background-image: url('../ico/appfile-unknown-o.png');
+}
+/*删除按钮*/
+.remove
+{
+    cursor: pointer;
+    color: #78C3F3;
+}
+.remove:hover
+{
+    text-decoration: underline;
+    color: #1b6a97;
+}

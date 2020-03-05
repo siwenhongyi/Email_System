@@ -1,0 +1,71 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<h2>{{title}}</h2>
+<div class="row">
+    <div class="col-md-8">
+        <h4>Fill in the necessary information to register</h4>
+        <hr />
+        <div class="head" style="padding-left:10px;padding-top:10px; ">
+            {% load static %}
+            <p><img src="{% static 'app/ico/defaulthead.jpg' %}" class="face"></p>
+        </div>
+        <hr />
+        <form action="." method="POST" class="user_info" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="op">
+                <a href="javascript:;" class="file">选择头像
+                    <input class="imgfile" name="avatar" type="file" accept="image/*" />
+                </a>
+            </div>
+            <div class="op">
+                <label class="op-lebel" for="user_email">Email_Accounts</label>
+                <input class="op-input" type="text" placeholder="只包含数字字母下划线" name="user_email" value= "{{ message.user_email }}" 
+                    oninput="value = value.replace(/[^\a-\z\A-\Z0-9_]/g,'')">&nbsp;&nbsp;@hongyi.com
+            </div>
+            <div class="op">
+                <label class="op-lebel" for="nick_name">Nick Name</label>
+                <input class="op-input" type="text" name = "nick_name" placeholder="Your Nick Name" value="{{ message.nick_name }}">
+            </div>
+            <div class="op">
+                <label class="op-lebel" for="password">Password</label>
+                <input class="op-input" type="password" name="password" placeholder="只包含数字字母" value="{{ message.password }}">
+            </div>
+            <div class="op">
+                <label class="op-lebel" for="password_again">Password Again</label>
+                <input class="op-input" type="password" name="password_again" placeholder="Reconfirm Password" value="{{ message.password_again }}">
+            </div>
+            <div class="op">
+                <label class="op-lebel" for="profile">Profile</label>
+                <input class="op-input" type="text" name="profile" placeholder="Something about you" value="{{ message.profile }}">
+            </div>
+            <div>
+                <label class="op-lebel" for="phonenum">Phonenum</label>
+                <input class="op-input" type="text" name="phonenum" placeholder="Your Phone Number" maxlength="11"
+                    oninput="value=value.replace(/[^\d]/g,'')"
+                    pattern="(\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$"
+                    required="required" value="{{ message.phonenum }}">
+            </div>
+            <div class="op">
+                <label class="op-lebel" for=" secret male female">Sex</label>
+                <input type="radio" class="op-input" name="sex" id="secret" value ='None' checked />
+                <label for="secret">秘密</label>
+                <input type="radio" class="op-input" name="sex" id="male" value="True" />
+                <label for="male">男士</label>
+                <input type="radio" class="op-input" name="sex" id="female" value="False" />
+                <label for="female">女士</label>
+            </div>
+            <hr />
+            <input type="submit" value="Submit" class="sbbt">
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% load static %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+<script src="{% static 'app/scripts/show.head.js' %}"></script>
+<link rel="stylesheet" href="{% static 'app/content/boostrap.css' %}" />
+<link rel="stylesheet" href="{% static 'app/content/user_info.css' %}" />
+{% endblock %}

@@ -1,0 +1,39 @@
+﻿{% extends "app/layout.html" %}
+
+{% block mainpart %}
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/page.all.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/navbar.left.css' %}" />
+</head>
+<div class="page_all">
+    <div class="menu" id="leftfun">
+        <ul class="navbar ntul" id="navBarTd">
+            <li class="write fs">
+                <a id="write_btn" href="{% url 'writeletter' %}" style="background-color: #494A4C;">
+                    <img src="{% static 'app/ico/writeletter.png' %}" />
+                </a>
+            </li>
+            <li class="inbox fs">
+                <a id="inbox_btn" href="{% url 'inbox' %}" style="background-color: #606060;" >
+                    <img src="{% static 'app/ico/inbox.png' %}" />
+                </a>
+            </li>
+            <li class="sendbox fs">
+                <a id="sendbox_btn" href="{% url 'sendbox' %}" style="background-color: #70787B;" >
+                    <img src="{% static 'app/ico/sendbox.png' %}" />
+                </a>
+            </li>
+            <li class="addressbook fs">
+                <a id="addressbook_btn" href="{% url 'addressbook' %}" style="background-color: #949DA2;" >
+                    <img src="{% static 'app/ico/addressbook.png' %}" />
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="right_page">
+        {% block rightpart %}{% endblock %}
+    </div>
+</div>
+{% endblock %}
