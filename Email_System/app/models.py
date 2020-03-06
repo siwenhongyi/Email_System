@@ -4,6 +4,8 @@ Definition of models.
 
 from django.db import models
 # Create your models here.
+from django.db.models.signals import pre_delete
+from django.dispatch.dispatcher import receiver
 
 
 class user(models.Model):
@@ -30,6 +32,11 @@ class attachment(models.Model):
 
     class Meta:
         db_table = "attachment"
+
+@receiver(pre_delete,sender = attachment)
+def useratt_del(sender,instance,**kwargs):
+    # Pass false so FileField doesn't save the model.
+    instance.file.delete(False)
 
 class Mymail(models.Model):
     objects = models.Manager()

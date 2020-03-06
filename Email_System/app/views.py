@@ -9,9 +9,10 @@ import random
 from datetime import datetime
 
 from django.http import HttpRequest
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.http import FileResponse
 from django.http import HttpResponseRedirect
+from django.shortcuts import render,redirect
+from django.utils.encoding import escape_uri_path
 #下面是发邮件的
 import smtplib
 from email.header import Header
@@ -41,6 +42,17 @@ def check_Legality(id:str,acc:str):
     if a.sender == acc or a.receiver == acc:
         return True
     return False
+@check_login
+def download_attachment(request):
+    _id = request.GET.get('file_id','')
+    f = attachment.objects.get(id = _id).file
+    response = FileResponse(f.open('rb'))
+    response['Content-Type'] = 'application/octet-stream'
+    response['Content-Disposition'] = "attachment; filename*=utf-8''{}".format(escape_uri_path(f.name.replace('upload/','')))
+    print(response['Content-Disposition'])
+    return response
+
+
 
 def home(request):
     """Renders the home page."""
@@ -184,7 +196,7 @@ def writeletter(request):
                       'massage':'写邮件',
                       'year':datetime.now().year,
                   }
-        )
+                )
 @check_login
 def sendletter(request):
     send_mail = Mymail()
@@ -290,6 +302,7 @@ def mail(request):
             t = dict()
             t['name'] = f.file.name.replace('upload/','')
             t['size'] = format(f.file.size / 1024,'.2f')
+            t['pk'] = f.id
             t['id'] = random.randint(0,10000)
             att.append(t)
         print(len(att))
@@ -305,6 +318,7 @@ def mail(request):
                 'sendername':sender_name,
                 'receivername':receiver_name,
                 'status':status,
+                'inbox':mail.sender != request.session['user_email'],
             }
         )
     else:
@@ -316,6 +330,28 @@ def mail(request):
                 'year':datetime.now().year,
             }
         )
+def mailmenu(request):
+    mail = Mymail.objects.get(mid = request.POST.get('mailid'))
+    if request.POST.get('reply',None):
+        to = mail.sender
+        theme = '回复：' + mail.theme
+        return render(request,'app/writeletter.html',
+                      {
+                          'title':'红衣邮箱-写信',
+                          'massage':'写邮件',
+                          'year':datetime.now().year,
+                          'to':to,
+                          'theme':theme,
+                      }
+                    )
+    elif request.POST.get('delete',None):
+        mail.isdelete = True
+        mail.save()
+    else:
+        for f in mail.files.all():
+            f.delete()
+        mail.delete()
+    return inbox(request)
 @check_login
 def addressbook(request):
     pass

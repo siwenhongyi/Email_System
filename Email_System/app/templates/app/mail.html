@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/write.letter.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/mail.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/write.letter.css' %}" />
     <script src="{% static 'app/scripts/mail.js' %}"></script>
     <!--
         <link rel="stylesheet" type="text/css" href="{% static 'app/content/mailbox.css' %}" />
@@ -50,7 +50,7 @@
     </div>
     <hr />   
     <div class="coninfo">
-        <textarea class="con" rows="15" readonly = "readonly">{{mail.content}}</textarea>
+        <textarea class="con" id="mailcontent" readonly = "readonly">{{mail.content}}</textarea>
     </div>
     <hr />
     {% if attc %}
@@ -60,7 +60,7 @@
         <div class="attfile" data-class={{f.id}} data-name={{f.name}}>
             <span><i class="fa" id={{f.id}}>&nbsp;</i>&nbsp;&nbsp;&nbsp;{{ f.name }}</span>
             <span class="size">&nbsp;&nbsp;&nbsp;{{ f.size }}kb&nbsp;&nbsp;&nbsp;</span>
-            <span class="download" onclick="">下载</span>
+            <span class="download" onclick ="window.location.href = '/download?file_id='+{{f.pk}} ">下载</span>
         </div>
         {% endfor %}
     </div>
@@ -68,11 +68,13 @@
     {% endif %}
     <div>
         <form action="/mailmenu/" method="POST" class="mailmenu">
-            <div>
-                <input type="submit" id="reply" value="回复"/>
-                <input type="submit" id="delete" value="删除" />
-                <input type="submit" id="delete_per" value="彻底删除" />
-            </div>
+            {% csrf_token %}
+            <input type="text" name="mailid" id="mailid" value={{mail.mid}} />
+            {% if inbox %}
+            <input type="submit" name="reply" value="回复" />
+            {% endif %}
+            <input type="submit" name="delete" value="删除" />
+            <input type="submit" name="delete_per" value="彻底删除" />
         </form>
     </div>
 </body>

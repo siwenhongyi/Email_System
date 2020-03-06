@@ -6,7 +6,6 @@ function addiclass()
         var spanid = $(filediv[i]).attr('data-class');
         var name   = $(filediv[i]).attr('data-name');
         var suffix = suffixName(name).toLowerCase();
-        console.log(suffix)
         if (suffix == '.jpg' || suffix == '.jpeg' || suffix == '.png' || suffix == '.bmp' || suffix == '.gif') { //图片格式
             res = 'appfile-image-o'
         } else if (suffix == '.doc' || suffix == '.docx') {//word格式
@@ -30,9 +29,29 @@ function addiclass()
         }
         $('#' + spanid).addClass(res);
     }
-    return ;
+    setrow($('#mailcontent'));
 }
 function suffixName(file_name){
     var result = /\.[^\.]+/.exec(file_name);
     return result[0];
+}
+function setrow(a)
+{
+    var mailcon = a.val();
+    var cou = 0;
+    var row = 0;
+    for(var i = 0;i<mailcon.length;i++){
+        cou++;
+        if(cou == 50 || mailcon[i] == '\n'){
+            cou = 0;
+            row++;
+        }
+    }
+    if(row <5)
+        row = 5;
+    else
+        row += 2;
+    if(row > 20)
+        row = 20;
+    a.attr('rows',row);
 }

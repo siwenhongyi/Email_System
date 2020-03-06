@@ -32,4 +32,7 @@ urlpatterns = [
     path('mail/',views.mail,name = 'mail'),
     path('addressbook/',views.addressbook,name = 'addressbook'),
     path('settings/',views.settings,name = 'settings'),
+
+    path('download/',views.download_attachment,name = 'download'),
+    path('mailmenu/',views.mailmenu,name = 'mailmenu'),
 ]
