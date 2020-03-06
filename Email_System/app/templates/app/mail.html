@@ -1,4 +1,4 @@
-{% extends "app/layout_main.html" %}
+﻿{% extends "app/layout_main.html" %}
 
 {% block rightpart %}
 
@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/write.letter.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/mail.css' %}" />
     <script src="{% static 'app/scripts/mail.js' %}"></script>
     <!--
@@ -19,7 +20,7 @@
 
 </head>
 
-<body>
+<body onload="addiclass()">
     <div class="mailinfo">
         <div class="theme">
             <span><label>&nbsp;{{mail.theme}}</label></span>
@@ -39,7 +40,7 @@
             </div>
             <div>
                 <span><label>附件：</label></span>
-                <span><label>{{mail.files.count}}个</label></span>
+                <span><label>{{attc}}个</label></span>
             </div>
             <div>
                 <span><label>发送状态：</label></span>
@@ -52,7 +53,19 @@
         <textarea class="con" rows="15" readonly = "readonly">{{mail.content}}</textarea>
     </div>
     <hr />
-    <div class="att">&nbsp;</div>
+    {% if attc %}
+    <div>
+        <div class="att">附件：</div>
+        {% for f in filelist %}
+        <div class="attfile" data-class={{f.id}} data-name={{f.name}}>
+            <span><i class="fa" id={{f.id}}>&nbsp;</i>&nbsp;&nbsp;&nbsp;{{ f.name }}</span>
+            <span class="size">&nbsp;&nbsp;&nbsp;{{ f.size }}kb&nbsp;&nbsp;&nbsp;</span>
+            <span class="download" onclick="">下载</span>
+        </div>
+        {% endfor %}
+    </div>
+    <hr />
+    {% endif %}
     <div>
         <form action="/mailmenu/" method="POST" class="mailmenu">
             <div>

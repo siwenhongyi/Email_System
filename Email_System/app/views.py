@@ -5,6 +5,7 @@ Definition of views.
 #使用到的库
 import copy
 import uuid
+import random
 from datetime import datetime
 
 from django.http import HttpRequest
@@ -283,6 +284,15 @@ def mail(request):
         if not mail.readstatus:
             mail.readstatus = True
             mail.save()
+
+        att = []
+        for f in mail.files.all():
+            t = dict()
+            t['name'] = f.file.name.replace('upload/','')
+            t['size'] = format(f.file.size / 1024,'.2f')
+            t['id'] = random.randint(0,10000)
+            att.append(t)
+        print(len(att))
         return render(
             request,
             'app/mail.html',
@@ -290,6 +300,8 @@ def mail(request):
                 'title':mail.theme,
                 'year':datetime.now().year,
                 'mail':mail,
+                'filelist':att,
+                'attc':mail.files.count,
                 'sendername':sender_name,
                 'receivername':receiver_name,
                 'status':status,

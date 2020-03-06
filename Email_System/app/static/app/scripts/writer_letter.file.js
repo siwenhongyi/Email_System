@@ -30,7 +30,7 @@ function upFile(a) {
             li = '<li><span><i class="fa appfile-excel-o">&nbsp;</i>&nbsp;&nbsp;&nbsp;' + name + '</span> <span class="size">&nbsp;&nbsp;&nbsp;' + parseInt(files.size / 1000) + 'kb&nbsp;&nbsp;&nbsp;</span> <span class="remove" data-class="li' + timeStamp + '" onclick="deleteLi(this)">删除</span> </li>';
         } else if (suffix == '.ppt' || suffix == '.pptx') {//PPT格式
             li = '<li><span><i class="fa appfile-ppt-o">&nbsp;</i>&nbsp;&nbsp;&nbsp;' + name + '</span> <span class="size">&nbsp;&nbsp;&nbsp;' + parseInt(files.size / 1000) + 'kb&nbsp;&nbsp;&nbsp;</span> <span class="remove" data-class="li' + timeStamp + '" onclick="deleteLi(this)">删除</span> </li>';
-        }else if (suffix == '.ppt' || suffix == '.pdf') {//PDF格式
+        }else if (suffix == '.pdf') {//PDF格式
             li = '<li><span><i class="fa appfile-pdf-o">&nbsp;</i>&nbsp;&nbsp;&nbsp;' + name + '</span> <span class="size">&nbsp;&nbsp;&nbsp;' + parseInt(files.size / 1000) + 'kb&nbsp;&nbsp;&nbsp;</span> <span class="remove" data-class="li' + timeStamp + '" onclick="deleteLi(this)">删除</span> </li>';
         }else if (suffix == '.zip' || suffix == '.rar'|| suffix == '.7z') {//压缩格式
             li = '<li><span><i class="fa appfile-com-o">&nbsp;</i>&nbsp;&nbsp;&nbsp;' + name + '</span> <span class="size">&nbsp;&nbsp;&nbsp;' + parseInt(files.size / 1000) + 'kb&nbsp;&nbsp;&nbsp;</span> <span class="remove" data-class="li' + timeStamp + '" onclick="deleteLi(this)">删除</span> </li>';
